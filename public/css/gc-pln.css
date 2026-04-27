@@ -15,17 +15,19 @@ body{
 
 /* CARD DASHBOARD */
 .dashboard-card{
-padding:20px;
-border:none;
-border-radius:14px;
-box-shadow:0 4px 12px rgba(0,0,0,0.06);
-text-align:center;
-background:#ffffff;
-transition:0.2s;
+    padding:20px;
+    border:none;
+    border-radius:14px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
+    text-align:center;
+    transition:0.2s;
 }
 
-.dashboard-card:hover{
-transform:translateY(-3px);
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    width: 100%;
 }
 
 /* CARD UMUM */
@@ -36,11 +38,16 @@ box-shadow:0 4px 12px rgba(0,0,0,0.06);
 background:#ffffff;
 }
 
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 /* JUDUL UTAMA */
 .header h2{
   font-size: 30px;
   font-weight: 700;
-  margin-bottom: px;
+  margin-bottom: 0;
   color: #1f2937;
 }
 
@@ -261,6 +268,12 @@ background: #ffe6e6;
 border-left: 6px solid #ff4d4f;
 }
 
+/* APPROVE */
+.card-approve{
+background: #e6f0ff;
+border-left: 6px solid #e24ace;
+}
+
 /* PROGRESS */
 .card-progress{
 background: #eaf2ff;
@@ -336,4 +349,44 @@ color:#4a90e2;
 #pageInfo{
 font-weight:500;
 color:#555;
+}
+
+/* PAGINATION CUSTOM */
+.pagination {
+    margin: 0;
+}
+
+.page-item .page-link {
+    border: none;
+    margin: 0 4px;
+    border-radius: 8px;
+    color: #4a90e2;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+/* Hover */
+.page-item .page-link:hover {
+    background: #4a90e2;
+    color: white;
+}
+
+/* Active */
+.page-item.active .page-link {
+    background: #4a90e2;
+    color: white;
+    box-shadow: 0 3px 8px rgba(74,144,226,0.3);
+}
+
+/* Disabled */
+.page-item.disabled .page-link {
+    opacity: 0.5;
+}
+
+th a {
+    cursor: pointer;
+}
+
+th a:hover {
+    color: #4a90e2;
 }

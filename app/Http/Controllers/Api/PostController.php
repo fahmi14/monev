@@ -41,6 +41,8 @@ class PostController extends Controller
                 ]
             );
 
+            $kegiatan->touch();
+
             // SIMPAN PETUGAS
             $petugasData = [];
 

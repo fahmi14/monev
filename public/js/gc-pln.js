@@ -6,112 +6,112 @@ let sortState = "desc";
 let currentPage = 1;
 let rowsPerPage = 10;
 
-function loadData(){
+// function loadData(){
 
-fetch(DATA_URL)
-.then(res=>res.text())
-.then(data=>{
+// fetch(DATA_URL)
+// .then(res=>res.text())
+// .then(data=>{
 
-let rows = data.split(/\r?\n/).slice(1);
+// let rows = data.split(/\r?\n/).slice(1);
 
-let totalOpen=0;
-let totalSubmit=0;
-let totalReject=0;
+// let totalOpen=0;
+// let totalSubmit=0;
+// let totalReject=0;
 
-let arr = [];
+// let arr = [];
 
-rows.forEach(row=>{
+// rows.forEach(row=>{
 
-if(!row) return;
+// if(!row) return;
 
-let col = row.split(",");
+// let col = row.split(",");
 
-let nama = col[0]?.replace(/^"|"$/g,'').trim();
+// let nama = col[0]?.replace(/^"|"$/g,'').trim();
 
-let open = parseInt(col[2]) || 0;
-let submit = parseInt(col[3]) || 0;
-let reject = parseInt(col[4]) || 0;
+// let open = parseInt(col[2]) || 0;
+// let submit = parseInt(col[3]) || 0;
+// let reject = parseInt(col[4]) || 0;
 
-let total = open + submit + reject;
-let progress = total ? ((submit/total)*100).toFixed(2) : 0;
+// let total = open + submit + reject;
+// let progress = total ? ((submit/total)*100).toFixed(2) : 0;
 
-totalOpen += open;
-totalSubmit += submit;
-totalReject += reject;
+// totalOpen += open;
+// totalSubmit += submit;
+// totalReject += reject;
 
-arr.push({
-nama,
-open,
-submit,
-reject,
-progress
-});
+// arr.push({
+// nama,
+// open,
+// submit,
+// reject,
+// progress
+// });
 
-});
-
-
-let totalAll = totalOpen + totalSubmit + totalReject;
-let progressTotal = totalAll 
-? ((totalSubmit/totalAll)*100).toFixed(2) 
-: 0;
-
-document.getElementById("open").innerText = totalOpen.toLocaleString("id-ID");
-document.getElementById("submit").innerText = totalSubmit.toLocaleString("id-ID");
-document.getElementById("reject").innerText = totalReject.toLocaleString("id-ID");
-document.getElementById("progress").innerText = progressTotal + "%";
-document.getElementById("total").innerText = totalAll.toLocaleString("id-ID");
+// });
 
 
-let now = new Date();
-document.getElementById("lastUpdate").innerText =
-"Last Update: " + now.toLocaleString("id-ID");
+// let totalAll = totalOpen + totalSubmit + totalReject;
+// let progressTotal = totalAll 
+// ? ((totalSubmit/totalAll)*100).toFixed(2) 
+// : 0;
+
+// document.getElementById("open").innerText = totalOpen.toLocaleString("id-ID");
+// document.getElementById("submit").innerText = totalSubmit.toLocaleString("id-ID");
+// document.getElementById("reject").innerText = totalReject.toLocaleString("id-ID");
+// document.getElementById("progress").innerText = progressTotal + "%";
+// document.getElementById("total").innerText = totalAll.toLocaleString("id-ID");
 
 
-window.petugasData = arr;
+// let now = new Date();
+// document.getElementById("lastUpdate").innerText =
+// "Last Update: " + now.toLocaleString("id-ID");
 
-renderTable();
 
-});
-}
+// window.petugasData = arr;
+
+// renderTable();
+
+// });
+// }
 
 
 
 // RENDER TABLE
-function renderTable(){
+// function renderTable(){
 
-let data = window.petugasData;
+// let data = window.petugasData;
 
-let start = (currentPage - 1) * rowsPerPage;
-let end = start + rowsPerPage;
+// let start = (currentPage - 1) * rowsPerPage;
+// let end = start + rowsPerPage;
 
-let paginated = data.slice(start, end);
+// let paginated = data.slice(start, end);
 
-let html="";
+// let html="";
 
-paginated.forEach(d=>{
+// paginated.forEach(d=>{
 
-html+=`
-<tr>
-<td>${d.nama}</td>
-<td class="text-end">${d.open}</td>
-<td class="text-end">${d.submit}</td>
-<td class="text-end">${d.reject}</td>
-<td class="text-end">${d.progress}%</td>
-</tr>
-`;
+// html+=`
+// <tr>
+// <td>${d.nama}</td>
+// <td class="text-end">${d.open}</td>
+// <td class="text-end">${d.submit}</td>
+// <td class="text-end">${d.reject}</td>
+// <td class="text-end">${d.progress}%</td>
+// </tr>
+// `;
 
-});
+// });
 
-document.getElementById("tablePetugas").innerHTML = html;
+// document.getElementById("tablePetugas").innerHTML = html;
 
 
-// PAGE INFO
-let totalPage = Math.ceil(data.length / rowsPerPage);
+// // PAGE INFO
+// let totalPage = Math.ceil(data.length / rowsPerPage);
 
-document.getElementById("pageInfo").innerText =
-"Halaman " + currentPage + " dari " + totalPage;
+// document.getElementById("pageInfo").innerText =
+// "Halaman " + currentPage + " dari " + totalPage;
 
-}
+// }
 
 
 

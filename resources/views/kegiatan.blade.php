@@ -21,23 +21,18 @@
         <h4>BPS Kabupaten Wonosobo</h4>
     </div>
 
-    <a href="/dashboard/gc-pbi" class="text-decoration-none">
+    @foreach ($kegiatans as $kegiatan)
+        <a href="{{ url('/kegiatan/' . $kegiatan->id) }}" class="text-decoration-none text-dark">
         <div class="card kegiatan-card gc-pbi">
             <div class="card-body">
-                <h4 class="card-title">GC PBI Tahap 2</h4>
-                <p class="card-text">Monitoring Ground Check PBI Tahun 2026</p>
+                <h4 class="card-title">{{ $kegiatan->nama }}</h4>
+                <p class="card-text">{{ $kegiatan->tahun }}</p>
             </div>
         </div>
     </a>
+    @endforeach
+    
 
-    <a href="/dashboard/gc-pln" class="text-decoration-none">
-        <div class="card kegiatan-card gc-pln">
-            <div class="card-body">
-                <h4 class="card-title">GC PLN</h4>
-                <p class="card-text">Monitoring Ground Check PLN Tahun 2026</p>
-            </div>
-        </div>
-    </a>
 
 </div>
 
